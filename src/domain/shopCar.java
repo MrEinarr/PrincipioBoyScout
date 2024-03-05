@@ -39,27 +39,27 @@ public class shopCar {
         switch(option) {
             case 1:
                 foods[currentIndex] = "Leche";
-                foodsPrices[currentIndex] = 5; // Precio de las manzanas
+                foodsPrices[currentIndex] = 5;
                 break;
             case 2:
                 foods[currentIndex] = "Galletas";
-                foodsPrices[currentIndex] = 3; // Precio de los plátanos
+                foodsPrices[currentIndex] = 3;
                 break;
             case 3:
                 foods[currentIndex] = "Botana";
-                foodsPrices[currentIndex] = 4; // Precio de las naranjas
+                foodsPrices[currentIndex] = 4;
                 break;
             case 4:
                 foods[currentIndex] = "Arroz";
-                foodsPrices[currentIndex] = 6; // Precio de las fresas
+                foodsPrices[currentIndex] = 6;
                 break;
             case 5:
                 foods[currentIndex] = "Refresco";
-                foodsPrices[currentIndex] = 8; // Precio de las uvas
+                foodsPrices[currentIndex] = 8;
                 break;
             case 6:
                 foods[currentIndex] = "Frijoles";
-                foodsPrices[currentIndex] = 7; // Precio de las peras
+                foodsPrices[currentIndex] = 7;
                 break;
             default:
                 System.out.println("Opción no válida.");
