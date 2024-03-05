@@ -1,34 +1,42 @@
 package business;
 
 import presentation.GUI;
-import javax.swing.JOptionPane;
-import domain.shopCar;
 
 public class Controller {
 
-	public void startController() {
-		boolean flag = true;
-		while (flag) {
-			int option = GUI.menu00();//inicia el rpogarama o lo termina
+	private GUI g;
+	private Logic lo;
 
-			if (option == JOptionPane.YES_OPTION) {
-				int n = GUI.menu01(); // Determina el tamaño de la lista
-				shopCar shopcar = new shopCar(n);// Crea el objeto carrito de compra
+	public Controller() {
+		g = new GUI();
+		lo = new Logic();
+	}
 
-				for (int i = 0; i < n; i++) { // Iterar sobre el número de productos (n)
-					int productOption = GUI.menu(); // Solicitar al usuario que elija un producto
-					if (shopcar.addProduct(productOption)) { // Añadir el producto al carrito de compras
-						GUI.showAddList();// Producto agregado
-					} else {
-						GUI.showErrorDialog();// Error al agregar
-					}
-				}
-				String shoppingList = shopcar.toString(); // Obtener la lista de compra como una cadena
-				GUI.showShoppingList(shoppingList); // Pasar la cadena al GUI para mostrarla
+	public void getControl() {
 
-			} else if (option == JOptionPane.NO_OPTION || option == JOptionPane.CLOSED_OPTION) { //Cerrar programa
-				flag = false;
-			}
+		int total = 0;
+
+		int n = g.showInput("Cuantos Productos desea Comprar?");
+		String[] foods = new String[n];
+		int[] foodsPrices = new int[n];
+		int option;
+
+		for (int i = 0; i < n; i++) {
+			option = g.showInput(
+					"Digite un numero para seleccionar la opcion\n1.Leche\n2.Galletas\n3.Botana\n4.Arroz\n5.Refresco\n6.Frijoles\n7.Mostrar Compra");
+			foods[i] = lo.getProduct(option);
+			foodsPrices[i] = lo.getPrices(foods[i]);
+		} // end For
+
+		for (int i = 0; i < n; i++) {
+			total = total + foodsPrices[i];
 		}
+		;
+
+		int pay = g.showInput("Por un precio total de: " + total + "\nDigite la cantidad de dinero con la que pagara.");
+		int change = lo.totalPrice(pay, total);
+
+		g.showInformation("Su cambio es de: " + change + "\n que tenga un Buen dia");
+
 	}
 }
